@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/demo-pact-brocker-dot-net/UserTest/pacts/*.json

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -19,7 +20,7 @@ namespace userConsumer
         {
             string reasonPhrase;
 
-            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/WeatherForecast/{id}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/users/{id}");
             request.Headers.Add("Accept", "application/json");
 
             var response = await _client.SendAsync(request);
@@ -35,7 +36,7 @@ namespace userConsumer
             if (status == HttpStatusCode.OK)
             {
                 var user = !string.IsNullOrEmpty(content) ?
-                   JObject.Parse(content)
+                  JsonConvert.DeserializeObject<dynamic>(content)
                   : null;
 
                 if (user != null)

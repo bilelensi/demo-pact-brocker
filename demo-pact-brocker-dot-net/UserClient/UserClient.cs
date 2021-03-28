@@ -47,5 +47,37 @@ namespace userConsumer
 
             throw new Exception(reasonPhrase);
         }
+
+        public async Task<string> GetUserPosition(int id)
+        {
+            string reasonPhrase;
+
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/users/{id}");
+            request.Headers.Add("Accept", "application/json");
+
+            var response = await _client.SendAsync(request);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var status = response.StatusCode;
+
+            reasonPhrase = response.ReasonPhrase;
+
+            request.Dispose();
+            response.Dispose();
+
+            if (status == HttpStatusCode.OK)
+            {
+                var user = !string.IsNullOrEmpty(content) ?
+                  JsonConvert.DeserializeObject<dynamic>(content)
+                  : null;
+
+                if (user != null)
+                    return (string)user["position"];
+                else
+                    throw new Exception("user not found.");
+            }
+
+            throw new Exception(reasonPhrase);
+        }
     }
 }

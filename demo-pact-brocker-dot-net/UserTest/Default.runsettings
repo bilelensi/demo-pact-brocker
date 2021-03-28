@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    <!-- Parameters used by tests at runtime -->
+    <TestRunParameters>
+        <Parameter name="MockServerPort" value="9222" />
+        <Parameter name="MockProviderServiceBaseUri" value="http://localhost" />
+        <Parameter name="PactBrokerHost" value="http://localhost:9292" />
+        <Parameter name="ServiceProviderBaseUri" value="http://localhost:5003" />
+    </TestRunParameters>
+</RunSettings>

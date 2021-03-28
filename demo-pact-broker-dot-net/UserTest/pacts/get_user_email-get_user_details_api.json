@@ -1,0 +1,54 @@
+{
+  "consumer": {
+    "name": "Get user email"
+  },
+  "provider": {
+    "name": "Get user details Api"
+  },
+  "interactions": [
+    {
+      "description": "Get user email",
+      "providerState": "Get user details Api",
+      "request": {
+        "method": "get",
+        "path": "/api/users/2",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": 2,
+          "email": "bilel.rezgui@mail.com",
+          "firstName": "Bilel",
+          "lastName": "Rezgui",
+          "lastUpdate": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "2021-03-27T20:49:31.5899215+01:00"
+          },
+          "gender": "Male",
+          "position": {
+            "json_class": "Pact::Term",
+            "data": {
+              "generate": "",
+              "matcher": {
+                "json_class": "Regexp",
+                "o": 0,
+                "s": "[(Manager)(Engineer)(Coordinator)]?"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "1.0.0"
+    }
+  }
+}
